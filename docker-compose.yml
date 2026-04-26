@@ -1,15 +1,29 @@
 services:
+  backend:
+    build: .
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongo
+
   frontend:
     build: ./app/frontend
     ports:
       - "3000:3000"
 
-  backend:
-    build: ./app/backend
-    ports:
-      - "5000:5000"
-
   mongo:
     image: mongo
     ports:
       - "27017:27017"
+
+  prometheus:
+    image: prom/prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - "3001:3000"
