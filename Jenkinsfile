@@ -3,6 +3,15 @@ pipeline {
 
     stages {
 
+        stage('Cleanup Old Container') {
+            steps {
+                echo 'Removing old container if exists...'
+                sh '''
+                docker rm -f my-app-container || true
+                '''
+            }
+        }
+
         stage('Build') {
             steps {
                 echo 'Building Docker Image...'
@@ -13,7 +22,9 @@ pipeline {
         stage('Run') {
             steps {
                 echo 'Running Container...'
-                sh 'docker run -d -p 3000:3000 my-app'
+                sh '''
+                docker run -d -p 3000:3000 --name my-app-container my-app
+                '''
             }
         }
 
