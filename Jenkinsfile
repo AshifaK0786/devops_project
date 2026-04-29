@@ -15,9 +15,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building Docker Image...'
-                sh '''
-                docker build -t my-app .
-                '''
+                sh 'docker build -t my-app .'
             }
         }
 
@@ -25,7 +23,7 @@ pipeline {
             steps {
                 echo 'Running Container...'
                 sh '''
-                docker run -d -p 3002:3000 --name my-app-container my-app
+                docker run -d -p 3000:3000 --name my-app-container my-app
                 '''
             }
         }
