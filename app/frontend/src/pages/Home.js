@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <div className="home">
       <div className="hero-section">
-        <h1>Welcome to Appointment Scheduler</h1>
+        <h1>Welcome to Appointment Scheduler </h1>
         <p>Book appointments with service providers easily</p>
         <div className="cta-buttons">
           <Link to="/signup" className="cta-button primary">Get Started</Link>
