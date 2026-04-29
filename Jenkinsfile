@@ -11,14 +11,12 @@ pipeline {
                 '''
             }
         }
-
         stage('Build') {
             steps {
                 echo 'Building Docker Image...'
                 sh 'docker build -t my-app .'
             }
         }
-
         stage('Run') {
             steps {
                 echo 'Running Container...'
