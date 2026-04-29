@@ -23,7 +23,7 @@ pipeline {
             steps {
                 echo 'Running Container...'
                 sh '''
-                docker run -d -p 3000:3000 --name my-app-container my-app
+                docker run -d -p 3002:5000 --name my-app-container my-app
                 '''
             }
         }
